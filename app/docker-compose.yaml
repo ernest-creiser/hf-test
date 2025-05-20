@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=NAME
+      - POSTGRES_USER=USER
+      - POSTGRES_PASSWORD=PASSWORD
+  app:
+    build: .
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=NAME
+      - POSTGRES_USER=USER
+      - POSTGRES_PASSWORD=PASSWORD
+      - POSTGRES_HOST=db
+    depends_on:
+      - db
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080
+    environment:
+      - SWAGGER_JSON=/app/schema.yml
+
+networks:
+  default:
+    name: default-network
+    driver: bridge
+
+volumes:
+  db:
