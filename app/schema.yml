@@ -4,10 +4,10 @@ info:
   version: 1.0.0
   description: Your project description
 paths:
-  /authors/:
+  /games/:
     get:
-      operationId: authors_list
-      description: A simple ViewSet for viewing and editing Authors.
+      operationId: games_list
+      description: A simple ViewSet for viewing and editing books.
       parameters:
       - name: search
         required: false
@@ -16,7 +16,7 @@ paths:
         schema:
           type: string
       tags:
-      - authors
+      - games
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -28,24 +28,24 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Author'
+                  $ref: '#/components/schemas/Game'
           description: ''
     post:
-      operationId: authors_create
-      description: A simple ViewSet for viewing and editing Authors.
+      operationId: games_create
+      description: A simple ViewSet for viewing and editing books.
       tags:
-      - authors
+      - games
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Author'
+              $ref: '#/components/schemas/Game'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Author'
+              $ref: '#/components/schemas/Game'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Author'
+              $ref: '#/components/schemas/Game'
         required: true
       security:
       - cookieAuth: []
@@ -56,21 +56,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Author'
+                $ref: '#/components/schemas/Game'
           description: ''
-  /authors/{id}/:
+  /games/{id}/:
     get:
-      operationId: authors_retrieve
-      description: A simple ViewSet for viewing and editing Authors.
+      operationId: games_retrieve
+      description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
         name: id
         schema:
           type: integer
-        description: A unique integer value identifying this author.
+        description: A unique integer value identifying this game.
         required: true
       tags:
-      - authors
+      - games
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -80,31 +80,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Author'
+                $ref: '#/components/schemas/Game'
           description: ''
     put:
-      operationId: authors_update
-      description: A simple ViewSet for viewing and editing Authors.
+      operationId: games_update
+      description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
         name: id
         schema:
           type: integer
-        description: A unique integer value identifying this author.
+        description: A unique integer value identifying this game.
         required: true
       tags:
-      - authors
+      - games
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Author'
+              $ref: '#/components/schemas/Game'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Author'
+              $ref: '#/components/schemas/Game'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Author'
+              $ref: '#/components/schemas/Game'
         required: true
       security:
       - cookieAuth: []
@@ -115,31 +115,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Author'
+                $ref: '#/components/schemas/Game'
           description: ''
     patch:
-      operationId: authors_partial_update
-      description: A simple ViewSet for viewing and editing Authors.
+      operationId: games_partial_update
+      description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
         name: id
         schema:
           type: integer
-        description: A unique integer value identifying this author.
+        description: A unique integer value identifying this game.
         required: true
       tags:
-      - authors
+      - games
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedAuthor'
+              $ref: '#/components/schemas/PatchedGame'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedAuthor'
+              $ref: '#/components/schemas/PatchedGame'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedAuthor'
+              $ref: '#/components/schemas/PatchedGame'
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -149,20 +149,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Author'
+                $ref: '#/components/schemas/Game'
           description: ''
     delete:
-      operationId: authors_destroy
-      description: A simple ViewSet for viewing and editing Authors.
+      operationId: games_destroy
+      description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
         name: id
         schema:
           type: integer
-        description: A unique integer value identifying this author.
+        description: A unique integer value identifying this game.
         required: true
       tags:
-      - authors
+      - games
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -170,19 +170,12 @@ paths:
       responses:
         '204':
           description: No response body
-  /books/:
+  /platforms/:
     get:
-      operationId: books_list
+      operationId: platforms_list
       description: A simple ViewSet for viewing and editing books.
-      parameters:
-      - name: search
-        required: false
-        in: query
-        description: A search term.
-        schema:
-          type: string
       tags:
-      - books
+      - platforms
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -194,24 +187,24 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Book'
+                  $ref: '#/components/schemas/Platform'
           description: ''
     post:
-      operationId: books_create
+      operationId: platforms_create
       description: A simple ViewSet for viewing and editing books.
       tags:
-      - books
+      - platforms
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/Platform'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/Platform'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/Platform'
         required: true
       security:
       - cookieAuth: []
@@ -222,21 +215,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Book'
+                $ref: '#/components/schemas/Platform'
           description: ''
-  /books/{id}/:
+  /platforms/{name}/:
     get:
-      operationId: books_retrieve
+      operationId: platforms_retrieve
       description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
-        name: id
+        name: name
         schema:
-          type: integer
-        description: A unique integer value identifying this book.
+          type: string
+        description: A unique value identifying this platform.
         required: true
       tags:
-      - books
+      - platforms
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -246,31 +239,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Book'
+                $ref: '#/components/schemas/Platform'
           description: ''
     put:
-      operationId: books_update
+      operationId: platforms_update
       description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
-        name: id
+        name: name
         schema:
-          type: integer
-        description: A unique integer value identifying this book.
+          type: string
+        description: A unique value identifying this platform.
         required: true
       tags:
-      - books
+      - platforms
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/Platform'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/Platform'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/Platform'
         required: true
       security:
       - cookieAuth: []
@@ -281,31 +274,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Book'
+                $ref: '#/components/schemas/Platform'
           description: ''
     patch:
-      operationId: books_partial_update
+      operationId: platforms_partial_update
       description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
-        name: id
+        name: name
         schema:
-          type: integer
-        description: A unique integer value identifying this book.
+          type: string
+        description: A unique value identifying this platform.
         required: true
       tags:
-      - books
+      - platforms
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedBook'
+              $ref: '#/components/schemas/PatchedPlatform'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedBook'
+              $ref: '#/components/schemas/PatchedPlatform'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedBook'
+              $ref: '#/components/schemas/PatchedPlatform'
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -315,20 +308,179 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Book'
+                $ref: '#/components/schemas/Platform'
           description: ''
     delete:
-      operationId: books_destroy
+      operationId: platforms_destroy
       description: A simple ViewSet for viewing and editing books.
       parameters:
       - in: path
-        name: id
+        name: name
         schema:
-          type: integer
-        description: A unique integer value identifying this book.
+          type: string
+        description: A unique value identifying this platform.
         required: true
       tags:
-      - books
+      - platforms
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /studios/:
+    get:
+      operationId: studios_list
+      description: A simple ViewSet for viewing and editing books.
+      tags:
+      - studios
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Studio'
+          description: ''
+    post:
+      operationId: studios_create
+      description: A simple ViewSet for viewing and editing books.
+      tags:
+      - studios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Studio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Studio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Studio'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Studio'
+          description: ''
+  /studios/{name}/:
+    get:
+      operationId: studios_retrieve
+      description: A simple ViewSet for viewing and editing books.
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        description: A unique value identifying this studio.
+        required: true
+      tags:
+      - studios
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Studio'
+          description: ''
+    put:
+      operationId: studios_update
+      description: A simple ViewSet for viewing and editing books.
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        description: A unique value identifying this studio.
+        required: true
+      tags:
+      - studios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Studio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Studio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Studio'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Studio'
+          description: ''
+    patch:
+      operationId: studios_partial_update
+      description: A simple ViewSet for viewing and editing books.
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        description: A unique value identifying this studio.
+        required: true
+      tags:
+      - studios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStudio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStudio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStudio'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Studio'
+          description: ''
+    delete:
+      operationId: studios_destroy
+      description: A simple ViewSet for viewing and editing books.
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        description: A unique value identifying this studio.
+        required: true
+      tags:
+      - studios
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -338,7 +490,7 @@ paths:
           description: No response body
 components:
   schemas:
-    Author:
+    Game:
       type: object
       properties:
         id:
@@ -346,10 +498,29 @@ components:
           readOnly: true
         name:
           type: string
+        release_date:
+          type: string
+          format: date
+        ratings:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        studio:
+          type: string
+          nullable: true
+        platform:
+          type: array
+          items:
+            type: string
+          readOnly: true
       required:
       - id
       - name
-    Book:
+      - platform
+      - ratings
+      - release_date
+    PatchedGame:
       type: object
       properties:
         id:
@@ -357,31 +528,46 @@ components:
           readOnly: true
         name:
           type: string
-        author:
+        release_date:
+          type: string
+          format: date
+        ratings:
           type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        studio:
+          type: string
           nullable: true
+        platform:
+          type: array
+          items:
+            type: string
+          readOnly: true
+    PatchedPlatform:
+      type: object
+      properties:
+        name:
+          type: string
+    PatchedStudio:
+      type: object
+      properties:
+        name:
+          type: string
+    Platform:
+      type: object
+      properties:
+        name:
+          type: string
       required:
-      - id
       - name
-    PatchedAuthor:
+    Studio:
       type: object
       properties:
-        id:
-          type: integer
-          readOnly: true
         name:
           type: string
-    PatchedBook:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-        author:
-          type: integer
-          nullable: true
+      required:
+      - name
   securitySchemes:
     basicAuth:
       type: http
